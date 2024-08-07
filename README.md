@@ -1,5 +1,5 @@
 # UR3e_simulation
-URDF Test for UR3e robot arm.
+URDF Test for UR3e robot arm. URDFs and Meshes are from [here](https://github.com/Daniella1/urdf_files_dataset/blob/main/urdf_files/ros-industrial/xacro_generated/universal_robots/ur_description/urdf/ur3e.urdf).
 
 ## Setup
 

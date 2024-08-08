@@ -6,6 +6,9 @@ URDF Test for UR3e robot arm using pybullet. URDFs and Meshes are from [here](ht
 You need to install python3. Once that is done, set up your virtual environment (venv):
 
 ```bash
+# Move to this  directory
+cd pybullet
+
 python3 -m venv venv
 ```
 

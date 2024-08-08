@@ -4,7 +4,7 @@
 
     <!-- Robot  -->
     <include>
-      <uri>model://file:///urdf/robot.sdf</uri>
+      <uri>model://robot</uri>
     </include>
 
     <!-- Plugin for interactive markers -->

@@ -25,7 +25,7 @@ WORKDIR /
 COPY ./urdf ./urdf/
 
 # Command to run when starting the container
-CMD ["gazebo", "--verbose", "urdf/robot.urdf"]
+CMD ["gazebo", "--verbose", "urdf/simulation_test.sdf"]
 
 
 

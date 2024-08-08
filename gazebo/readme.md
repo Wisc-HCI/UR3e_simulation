@@ -11,6 +11,12 @@ sudo docker run -it --rm -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix ga
 ```
 
 
+Notes:
+Converting URDF to SDF:
+```bash
+gz sdf -p robot.urdf > robot.sdf
+```
+
 <!-- ```bash
 sudo docker build -t ros-gazebo-urdf .
 ```

@@ -38,7 +38,7 @@ last_time = time.time()
 INCREMENT_INTERVAL = 0.1  # Time in seconds to wait before next increment
 POSITION_INCREMENT = 0.05  # Amount by which to increase the joint position
 
-# Increment all joint(s) by POSITION_INCREMENT every INCREMENT_INTERVAL
+# Increment joint(s) by POSITION_INCREMENT every INCREMENT_INTERVAL
 # Bounds of rotation limited by urdf
 while True:
 
@@ -48,8 +48,8 @@ while True:
     if current_time - last_time >= INCREMENT_INTERVAL:
         position += POSITION_INCREMENT
 
-        # Increments position of 6th joint
-        #p.setJointMotorControl2(robot, joints["wrist_1_joint"], p.POSITION_CONTROL, targetPosition=position)
+        # Increments position of wrist_1_joint joint
+        p.setJointMotorControl2(robot, joints["wrist_1_joint"], p.POSITION_CONTROL, targetPosition=position)
 
         last_time = current_time
 

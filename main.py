@@ -15,7 +15,7 @@ start_orientation = p.getQuaternionFromEuler([0,0,0])
 robot = p.loadURDF("robot.urdf",start_pos, start_orientation)
 
 
-# Map joint names (from urdf) to index values "joint_L1" -> "joint_L6"
+# Map joint names (from urdf) to index values
 joints = {}  
 
 for i in range(p.getNumJoints(robot)):

@@ -1,3 +1,45 @@
+TODO: make rviz represent linear/angular velocities defined in relaxed_ik_ros2/scripts/velocities.py
+- Problem: rviz runs with urdf, etc (see scripts/demo.launch.py) however the robot is not moving, although it should in alignment to whatever velocities.py is making it to do so. Specific directions on how to run is also given below.
+- To start relaxed_ik_ros2: refer to README.md in relaxed_ik_ros2. For detailed directions, see below.
+- Note. currently, the setup is done with UR5. You can change this to UR3e by relaxed_ik_ros2/relaxed_ik_core/configs/settings.yaml.
+
+## Running rviz and velocities.py for simulation
+You need to open 2 terminals. Whenever the ros2 command does not work, that means that ros2 is not sourced so do ``source /opt/ros/${ROS_DISTRO}/setup.bash``.
+
+```bash
+# in one terminal, fire up the launch python wrapper file
+cd src
+ros2 launch relaxed_ik_ros2 demo.launch.py # rviz will pop up and the robot will be shown. There should be a blue light on for the RobotModel (meaning no errors)
+
+# in another terminal, run the Python node (velocities.py)
+. install/setup.bash
+source/opt/ros/${ROS_DISTRO}/setup.bash
+ros2 run relaxed_ik_ros2 velocities.py
+```
+Whenever changes are made to velocities.py or to relevant files in the relaxed_ik_ros2 package, the package must be built and compiled everytime (colcon build command + . install/setup.bash command).
+
+## Starting relaxed_ik_ros2
+For the bulk of the instructions, follow the README in the relaxed_ik_ros2 folder. 
+The UR description files are already in there, so you just have to install it.
+
+```bash
+# install the ur_description package
+sudo apt-get update
+
+sudo apt-get install ros-${ROS_DISTRO}-ur-description
+
+# verify installation via rviz (for example, UR3e)
+source /opr/ros/${ROS_DISTRO}/setup.bash
+ros2 launch ur_description view_ur.launch.py ur_type:=ur3e
+```
+
+Whenever you are building the relaxed_ik_ros2 package, use ``colcon build``.
+Specifically, make sure you are in your workstation and not in src and run 
+```bash
+colcon build --packages-select relaxed_ik_ros2 --symlink-install # will take about 3 ~ 8 seconds
+. install/setup.bash
+```
+
 ## ROS2 Iron Installation
 
 ```bash

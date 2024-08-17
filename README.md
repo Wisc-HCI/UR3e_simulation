@@ -18,9 +18,16 @@ ros2 run relaxed_ik_ros2 velocities.py
 ```
 Whenever changes are made to velocities.py or to relevant files in the relaxed_ik_ros2 package, the package must be built and compiled everytime (colcon build command + . install/setup.bash command).
 
+If you need a reference on how velocities.py (should) operate, then you can run 
+```bash
+ros2 run relaxed_ik_ros2 keyboard_input.py
+```
+and use keyboard keys to control the velocities/angles in rviz, in real-time.
+
 ## Starting relaxed_ik_ros2
 For the bulk of the instructions, follow the README in the relaxed_ik_ros2 folder. 
 The UR description files are already in there, so you just have to install it.
+Installation: https://automaticaddison.com/how-to-create-a-urdf-file-of-the-ur3e-robotic-arm-ros-2/
 
 ```bash
 # install the ur_description package

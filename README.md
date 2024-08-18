@@ -3,6 +3,7 @@ TODO: make rviz represent linear/angular velocities defined in relaxed_ik_ros2/s
 - To start relaxed_ik_ros2: refer to README.md in relaxed_ik_ros2. For detailed directions, see below.
 - Note. currently, the setup is done with UR5. You can change this to UR3e by relaxed_ik_ros2/relaxed_ik_core/configs/settings.yaml.
 
+
 ## Running rviz and velocities.py for simulation
 You need to open 2 terminals. Whenever the ros2 command does not work, that means that ros2 is not sourced so do ``source /opt/ros/${ROS_DISTRO}/setup.bash``.
 
@@ -16,7 +17,7 @@ ros2 launch relaxed_ik_ros2 demo.launch.py # rviz will pop up and the robot will
 source/opt/ros/${ROS_DISTRO}/setup.bash
 ros2 run relaxed_ik_ros2 velocities.py
 ```
-Whenever changes are made to velocities.py or to relevant files in the relaxed_ik_ros2 package, the package must be built and compiled everytime (colcon build command + . install/setup.bash command).
+Whenever changes are made to velocities.py or to relevant files in the relaxed_ik_ros2 package, the package must be built and compiled everytime (`colcon build`  +  `. install/setup.bash`).
 
 If you need a reference on how velocities.py (should) operate, then you can run 
 ```bash
@@ -36,7 +37,7 @@ sudo apt-get update
 sudo apt-get install ros-${ROS_DISTRO}-ur-description
 
 # verify installation via rviz (for example, UR3e)
-source /opr/ros/${ROS_DISTRO}/setup.bash
+source /opt/ros/${ROS_DISTRO}/setup.bash
 ros2 launch ur_description view_ur.launch.py ur_type:=ur3e
 ```
 

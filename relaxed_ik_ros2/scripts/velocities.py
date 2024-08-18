@@ -15,19 +15,19 @@ class VelocityInput(Node):
         super().__init__('velocity_input')
 
         deault_setting_file_path = path_to_src + '/configs/settings.yaml'
-        
+
         setting_file_path = deault_setting_file_path
         try:
             setting_file_path = self.get_parameter('setting_file_path')
         except:
             pass
-            
+
         #print("! ", setting_file_path)
         self.robot = Robot(setting_file_path)
-        
+
 
         self.ee_vel_goals_pub = self.create_publisher(EEVelGoals, 'relaxed_ik/ee_vel_goals', 5)
-        
+
         self.velocity_sets = [
         {'linear': [1, 0.0, 0.0], 'angular':[0.0, 0.0, 0.1]},
         {'linear': [2, 0.0, 0.0], 'angular':[0.0, 0.0, 0.2]},
@@ -35,9 +35,9 @@ class VelocityInput(Node):
         {'linear': [0.0, 0.0, 1], 'angular':[0.1, 0.0, 0.0]},
         {'linear': [1, 1, 0.0], 'angular':[0.0, 0.0, 0.1]},
         ]
-        
+
         #self.seq = 1
-        
+
         #self.linear = [0.0,0.0,0.0]
         #self.angular = [0.0,0.0,0.0]
 
@@ -45,28 +45,31 @@ class VelocityInput(Node):
         self.current_index = 0
         
     def publish_velocities(self):
-    	velocities = self.velocity_sets[self.current_index]
-    	msg = EEVelGoals()
-    	twist = Twist()
-    	twist.linear.x = velocities['linear'][0]
-    	twist.linear.y = velocities['linear'][1]
-    	twist.linear.z = velocities['linear'][2]
-    	twist.angular.x = velocities['angular'][0]
-    	twist.angular.y = velocities['angular'][1]
-    	twist.angular.z = velocities['angular'][2]
-    	
-    	tolerance = Twist()
-    	msg.ee_vels.append(twist)
-    	msg.tolerance.append(tolerance)
-    	
-    	self.ee_vel_goals_pub.publish(msg)
-    	self.get_logger().info('Publishing velocities: {}'.format(velocities))
-    	
-    	self.current_index = (self.current_index + 1) % len(self.velocity_sets)
+        velocities = self.velocity_sets[self.current_index]
+        msg = EEVelGoals()
+
+        twist = Twist()
+        
+        twist.linear.x = float(velocities['linear'][0])
+        twist.linear.y = float(velocities['linear'][1])
+        twist.linear.z = float(velocities['linear'][2])
+        twist.angular.x = float(velocities['angular'][0])
+        twist.angular.y = float(velocities['angular'][1])
+        twist.angular.z = float(velocities['angular'][2])
+        # print(type(twist.linear.x), type(twist.linear.y), twist.linear.z, twist.angular.x, twist.angular.y,  twist.angular.z)
+
+        tolerance = Twist()
+        msg.ee_vels.append(twist)
+        msg.tolerances.append(tolerance)
+
+        self.ee_vel_goals_pub.publish(msg)
+        self.get_logger().info('Publishing velocities: {}'.format(velocities))
+
+        self.current_index = (self.current_index + 1) % len(self.velocity_sets)
     	
 if __name__ == '__main__':
-	rclpy.init()
-	velocity_input = VelocityInput()
-	rclpy.spin(velocity_input)
-	velocity_input.destroy_node()
-	rclpy.shutdown()
+    rclpy.init()
+    velocity_input = VelocityInput()
+    rclpy.spin(velocity_input)
+    velocity_input.destroy_node()
+    rclpy.shutdown()

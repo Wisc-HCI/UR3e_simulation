@@ -5,6 +5,7 @@ TODO: make rviz represent linear/angular velocities defined in relaxed_ik_ros2/s
 
 
 ## Running rviz and velocities.py for simulation
+First see the next 2 sections to set up relaxed_ik_ros2 and ros2 if needed. Then do the following.
 You need to open 2 terminals. Whenever the ros2 command does not work, that means that ros2 is not sourced so do ``source /opt/ros/${ROS_DISTRO}/setup.bash``.
 
 ```bash
@@ -31,14 +32,20 @@ The UR description files are already in there, so you just have to install it.
 Installation: https://automaticaddison.com/how-to-create-a-urdf-file-of-the-ur3e-robotic-arm-ros-2/
 
 ```bash
-# install the ur_description package
-sudo apt-get update
+# Intall python packages
+pip3 install -r requirements.txt
 
+# install the required packages
+sudo apt-get update
+sudo apt install python3-pykdl
+sudo apt-get install ros-${ROS_DISTRO}-urdfdom-py
 sudo apt-get install ros-${ROS_DISTRO}-ur-description
 
 # verify installation via rviz (for example, UR3e)
 source /opt/ros/${ROS_DISTRO}/setup.bash
 ros2 launch ur_description view_ur.launch.py ur_type:=ur3e
+
+
 ```
 
 Whenever you are building the relaxed_ik_ros2 package, use ``colcon build``.

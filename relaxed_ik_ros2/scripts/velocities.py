@@ -47,13 +47,16 @@ class VelocityInput(Node):
     def publish_velocities(self):
         velocities = self.velocity_sets[self.current_index]
         msg = EEVelGoals()
+
         twist = Twist()
-        twist.linear.x = velocities['linear'][0]
-        twist.linear.y = velocities['linear'][1]
-        twist.linear.z = velocities['linear'][2]
-        twist.angular.x = velocities['angular'][0]
-        twist.angular.y = velocities['angular'][1]
-        twist.angular.z = velocities['angular'][2]
+        
+        twist.linear.x = float(velocities['linear'][0])
+        twist.linear.y = float(velocities['linear'][1])
+        twist.linear.z = float(velocities['linear'][2])
+        twist.angular.x = float(velocities['angular'][0])
+        twist.angular.y = float(velocities['angular'][1])
+        twist.angular.z = float(velocities['angular'][2])
+        # print(type(twist.linear.x), type(twist.linear.y), twist.linear.z, twist.angular.x, twist.angular.y,  twist.angular.z)
 
         tolerance = Twist()
         msg.ee_vels.append(twist)

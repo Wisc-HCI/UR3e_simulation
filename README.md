@@ -1,11 +1,12 @@
 - To start relaxed_ik_ros2: refer to README.md in relaxed_ik_ros2. For detailed directions, see below.
-- Note. currently, the setup is done with UR5. You can change this to UR3e by relaxed_ik_ros2/relaxed_ik_core/configs/settings.yaml.
+- Note. When adding new nodes within the ``scripts`` folder, make sure to add filename under ``relaxed_ik_ros2 > CMakeLists.txt > install``, or else when launch, the node file mentioned in the launch file will not be found and hence throw an error.
 
 
-## Running rviz and velocities.py for simulation
+## Running rviz and joint_states.py (or velocities.py) for simulation
 First see the next 2 sections to set up relaxed_ik_ros2 and ros2 if needed. Then do the following.
 You need to open 2 terminals. Whenever the ros2 command does not work, that means that ros2 is not sourced so do ``source /opt/ros/${ROS_DISTRO}/setup.bash``.
 
+### When input is raw angular velocity - ``velocities.py`` and ``demo.launch.py``
 ```bash
 # in one terminal, fire up the launch python wrapper file
 cd src
@@ -23,6 +24,9 @@ If you need a reference on how velocities.py (should) operate, then you can run
 ros2 run relaxed_ik_ros2 keyboard_input.py
 ```
 and use keyboard keys to control the velocities/angles in rviz, in real-time.
+
+### When input is joint state (6 values for 6-dof robot) - ``joint_states.py`` and ``rviz_joint_states.py``
+Run similar commands but just replace the filenames to ``joint_states.py`` and ``rviz_joint_states.py`` for the script (``ros run``) and the launch file (``ros launch``), respectively.
 
 ## Starting relaxed_ik_ros2
 For the bulk of the instructions, follow the README in the relaxed_ik_ros2 folder. 

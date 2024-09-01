@@ -4,7 +4,7 @@ import yaml
 from launch import LaunchDescription
 
 path_to_relaxed_ik = get_package_share_directory('relaxed_ik_ros2')
-setting_file_path = path_to_relaxed_ik + '/relaxed_ik_core/configs/example_settings/ur5.yaml'
+setting_file_path = path_to_relaxed_ik + '/relaxed_ik_core/configs/example_settings/ur3e.yaml'
 
 ## added
 # path_to_goal_publisher = get_package_share_directory('goal_publisher')

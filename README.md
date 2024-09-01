@@ -1,5 +1,3 @@
-TODO: make rviz represent linear/angular velocities defined in relaxed_ik_ros2/scripts/velocities.py
-- Problem: rviz runs with urdf, etc (see scripts/demo.launch.py) however the robot is not moving, although it should in alignment to whatever velocities.py is making it to do so. Specific directions on how to run is also given below.
 - To start relaxed_ik_ros2: refer to README.md in relaxed_ik_ros2. For detailed directions, see below.
 - Note. currently, the setup is done with UR5. You can change this to UR3e by relaxed_ik_ros2/relaxed_ik_core/configs/settings.yaml.
 

@@ -14,7 +14,7 @@ ros2 launch relaxed_ik_ros2 demo.launch.py # rviz will pop up and the robot will
 
 # in another terminal, run the Python node (velocities.py)
 . install/setup.bash
-source/opt/ros/${ROS_DISTRO}/setup.bash
+source /opt/ros/${ROS_DISTRO}/setup.bash
 ros2 run relaxed_ik_ros2 velocities.py
 ```
 Whenever changes are made to velocities.py or to relevant files in the relaxed_ik_ros2 package, the package must be built and compiled everytime (`colcon build`  +  `. install/setup.bash`).

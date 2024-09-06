@@ -22,11 +22,15 @@ RUN  apt-get install -y libwebkit2gtk-4.0-dev \
     libayatana-appindicator3-dev \
     librsvg2-dev
 
-# Install node related dependencies of lively
-# Install Node.js from Nodesource to get the latest version
-RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - && \
-    apt-get install -y nodejs
-RUN apt-get install npm -y 
+# Source: https://stackoverflow.com/questions/36399848/install-node-in-dockerfile
+# MAY NEED TO UPDATE THIS VERSION LATER ON
+ENV NODE_VERSION=20.17.0
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+ENV NVM_DIR=/root/.nvm
+RUN . "$NVM_DIR/nvm.sh" && nvm install ${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm use v${NODE_VERSION}
+RUN . "$NVM_DIR/nvm.sh" && nvm alias default v${NODE_VERSION}
+ENV PATH="/root/.nvm/versions/node/v${NODE_VERSION}/bin/:${PATH}"
 RUN npm install -g yarn
 
 # Install lively rust dependency

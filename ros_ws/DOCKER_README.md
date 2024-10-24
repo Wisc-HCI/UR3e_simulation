@@ -39,7 +39,7 @@ docker run -it -e DISPLAY=host.docker.internal:0.0 -v ${PWD}:/workspace --net=ho
 You and your computer are all set up, you rock! Now you are ready to continue onto README.md.
 
 
-### 3. Starting Container 
+### 3. Building
 Now build and source ros:
 ```bash
 source /opt/ros/iron/setup.bash

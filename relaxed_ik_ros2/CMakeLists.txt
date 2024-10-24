@@ -42,7 +42,7 @@ install(
 
 # Install nodes
 install(
-  FILES scripts/relaxed_ik_rust.py scripts/rviz_viewer.py scripts/keyboard_input.py scripts/velocities.py scripts/joint_states.py
+  FILES scripts/relaxed_ik_rust.py scripts/rviz_viewer.py scripts/keyboard_input.py scripts/velocities.py scripts/joint_states.py scripts/cartesian_to_joint.py scripts/cartesian_to_joint_multi.py
   DESTINATION lib/${PROJECT_NAME}
 )
 

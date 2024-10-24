@@ -2,3 +2,4 @@ venv/
 build/
 install/
 log/
+mya_test/

@@ -39,7 +39,31 @@ docker run -it -e DISPLAY=host.docker.internal:0.0 -v ${PWD}:/workspace --net=ho
 You and your computer are all set up, you rock! Now you are ready to continue onto README.md.
 
 
+### 3. Starting Container 
+Now build and source ros:
+```bash
+source /opt/ros/iron/setup.bash
+colcon build --symlink-install
+. install/setup.bash
+```
+### 4.  Running
+To run the RVIZ visualization, do the following
+```bash
 
+# Revision
+ros2 launch relaxed_ik_ros2 ik.launch.py
+
+ros2 launch relaxed_ik_ros2 script.launch.py # do in new terminal
+
+```
+
+## Notes
+* Anytime you change anything in this repo, you will need to rebuild and source the code:
+    ```bash
+    colcon build
+    source install/setup.bash
+   
+    ```
 
 ---
 

@@ -48,10 +48,12 @@ class MultiCartesianConverter(Node):
 		self.pub_goal = self.create_publisher(EEPoseGoals, '/relaxed_ik/ee_pose_goals', 1)
 		self.pub_reset = self.create_publisher(JointState, '/relaxed_ik/reset', 1)
 
-		self.get_logger().info('Starting reading all pose data.')
-		self.publish_new_goal()
 
 		self.output_data = []
+		self.get_logger().info('Starting reading all pose data.')
+		time.sleep(2)
+		self.publish_new_goal()
+
 
 	def create_output_file(self):
 		with open(self.output_path, 'w+', newline='') as f:
@@ -118,6 +120,7 @@ class MultiCartesianConverter(Node):
 		self.motion_start_y += self.relative_motion_end_y
 		self.motion_start_z += self.relative_motion_end_z
 		self.csv_reader = self.read_csv()
+		time.sleep(5)
 		self.publish_new_goal()
 
 	def read_csv(self):
@@ -132,9 +135,9 @@ if __name__ == '__main__':
 	# wait for relaxed IK to launch (bad coding practice)
 	time.sleep(5)
 
-	input_array = [os.path.join(os.path.expanduser("~"), "zoom_in_to_character", "scaled_smoothed_llm_output_trajectory_urgently_zoom in to character_10.txt.csv.csv.csv"),
-				os.path.join(os.path.expanduser("~"), "pan_around_character", "scaled_smoothed_llm_output_trajectory_calmly_pan around character_7.txt.csv.csv.csv")]
-	out_path = os.path.join(os.path.expanduser("~"), "output", "states.csv")
+	input_array = [os.path.join(os.path.expanduser("~"), "zoom_in_to_character", "scaled_smoothed_llm_output_trajectory_calmly_zoom in to character_1.txt.csv.csv.csv"),
+				os.path.join(os.path.expanduser("~"), "pan_around_character", "llm_output_trajectory_playfully_pan around character_2.txt.csv")]
+	out_path = os.path.join(os.path.expanduser("~"), "output", "calm_zoom_playful_pan.csv")
 
 	cc = MultiCartesianConverter(input_array, out_path)
 

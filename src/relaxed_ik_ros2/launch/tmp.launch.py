@@ -21,8 +21,8 @@ def generate_launch_description():
     return LaunchDescription([
         Node(
         	package='relaxed_ik_ros2',
-        	executable='cartesian_to_joint.py',
-        	name='cartesian_to_joint',
+        	executable='cartesian_to_joint_multi.py',
+        	name='cartesian_to_joint_multi',
         	output='screen',
         	parameters=[{'setting_file_path': setting_file_path}]
         ),
